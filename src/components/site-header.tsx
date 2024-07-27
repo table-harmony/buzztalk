@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { siteConfig } from "@/config/site";
+import { UserButton } from "@clerk/nextjs";
 
 export function SiteHeader() {
   return (
@@ -10,6 +11,7 @@ export function SiteHeader() {
         </div>
         <div className="flex gap-2 items-center">
           <ModeToggle />
+          <UserButton />
         </div>
       </div>
     </header>

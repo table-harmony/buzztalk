@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Poppins as FontSans } from "next/font/google";
+import { Montserrat as FontSans } from "next/font/google";
 
 import { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
