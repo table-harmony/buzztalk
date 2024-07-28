@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSession } from "@clerk/nextjs";
+import { cn } from "@/lib/utils";
 
 interface User {
   clerkId?: string;
@@ -37,50 +38,19 @@ export function Message({
   const isOwner = session?.user.id === user.clerkId;
 
   return (
-    <div className={"flex gap-2 items-start"}>
-      <Avatar className="size-6 mt-1">
+    <div className={cn("flex gap-2", { "ml-auto flex-row-reverse": isOwner })}>
+      <Avatar className="size-6">
         <AvatarImage alt="profile" src={user.image} />
         <AvatarFallback className="text-xs">SC</AvatarFallback>
       </Avatar>
-      <div className={"flex flex-col gap-1"}>
-        <div className="flex gap-2 items-center">
-          <span className="text-xs">{user.name}</span>
-          <span className="text-xs text-muted-foreground">
-            {formatDistanceToNow(createdAt, { addSuffix: true })}
-          </span>
-          {isOwner && <Menu messageId={id} />}
-        </div>
-        <div className="text-sm whitespace-pre-line break-all">{body}</div>
+      <div
+        className={cn(
+          "max-w-[75%] rounded-lg px-3 py-2 text-sm",
+          isOwner ? "bg-primary text-primary-foreground" : "bg-muted"
+        )}
+      >
+        {body}
       </div>
     </div>
-  );
-}
-
-function Menu({ messageId }: { messageId: any }) {
-  const deleteMessage = useMutation(api.messages.deleteMessage);
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="size-fit p-1"
-          aria-label="menu"
-        >
-          <EllipsisIcon className="size-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem
-          className="cursor-pointer"
-          onClick={() => {
-            deleteMessage({ messageId });
-          }}
-        >
-          Delete
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
