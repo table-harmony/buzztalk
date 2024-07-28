@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Buzz Talk",
+  name: "BuzzTalk",
   url: "https://buzztalk.vercel.app",
   description: "Chat app using convex",
   links: {

@@ -1,4 +1,12 @@
+import { GenericId, v, Validator } from "convex/values";
+import { TableNames } from "./_generated/dataModel";
 import { ActionCtx, MutationCtx, QueryCtx } from "./_generated/server";
+
+export function vid<TableName extends TableNames>(
+  tableName: TableName
+): Validator<GenericId<TableName>> {
+  return v.id(tableName);
+}
 
 export function formatName(
   firstName?: string | null,
