@@ -39,7 +39,10 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/bad-words": "^3.0.3",
+=======
+>>>>>>> 78f7eee6c31f5906caf4f3fc58e720603ccf4469
     "@types/node": "^20.14.13",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
