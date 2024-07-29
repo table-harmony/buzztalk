@@ -38,7 +38,11 @@ export function Message({
   const isOwner = session?.user.id === user.clerkId;
 
   return (
-    <div className={cn("flex gap-2", { "ml-auto flex-row-reverse": isOwner })}>
+    <div
+      className={cn("flex gap-2 w-full", {
+        "ml-auto flex-row-reverse": isOwner,
+      })}
+    >
       <Avatar className="size-6">
         <AvatarImage alt="profile" src={user.image} />
         <AvatarFallback className="text-xs">SC</AvatarFallback>

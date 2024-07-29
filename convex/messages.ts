@@ -1,16 +1,17 @@
-import { internalMutation, mutation, query } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 import { ConvexError, v } from "convex/values";
-import { getCurrentUser } from "./users";
+import { getCurrentUser, getUserByClerkId } from "./users";
 
 export const createMessage = mutation({
   args: {
+    clerkId: v.string(),
     body: v.string(),
   },
   async handler(ctx, args) {
-    const user = await getCurrentUser(ctx, {});
+    const user = await getUserByClerkId(ctx, { clerkId: args.clerkId });
 
-    if (!user) throw new ConvexError("User already exists");
+    if (!user) throw new ConvexError("Unauthorized");
 
     await ctx.db.insert("messages", {
       body: args.body,

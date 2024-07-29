@@ -11,8 +11,8 @@ export function Chat() {
 
   return (
     <div className="w-full overflow-x-auto relative">
-      <div className="overflow-auto sm:h-[calc(100vh-260px)] flex">
-        <div className="relative flex flex-col space-y-2 w-full p-2 h-[calc(100vh-360px)] sm:h-full">
+      <div className="overflow-auto sm:h-[calc(100vh-300px)] flex">
+        <div className="relative flex flex-col space-y-2 w-full p-2 h-[calc(100vh-400px)] sm:h-full">
           {messages?.map((message) => (
             <Message
               key={message._id}
@@ -28,7 +28,9 @@ export function Chat() {
           ))}
         </div>
       </div>
-      <CreateMessageForm />
+      <div className="p-4">
+        <CreateMessageForm />
+      </div>
     </div>
   );
 }
